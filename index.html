@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="APJ Abdul Kalam Technological University e-Governance Portal - Login">
+    <title>KTU Login - APJ Abdul Kalam Technological University</title>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ========================================
+         Animated Background
+    ======================================== -->
+    <div class="background">
+        <canvas id="particles"></canvas>
+    </div>
+
+    <!-- ========================================
+         Header
+    ======================================== -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <div class="logo-text">KTU</div>
+                    </div>
+                    <div class="header-text">
+                        <h1>e-Gov Platform for APJ Abdul Kalam Technological University</h1>
+                    </div>
+                </div>
+
+                <nav class="navbar">
+                    <a href="#" class="nav-link active">Home</a>
+                    <a href="#" class="nav-link">Research</a>
+                    <a href="#" class="nav-link">FAQ</a>
+                    <a href="#" class="nav-link">Contact Us</a>
+                </nav>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ========================================
+         Hero Section
+    ======================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h2 class="hero-title">Welcome to KTU Portal</h2>
+                <p class="hero-description">
+                    Access your personalized dashboard for academic excellence
+                </p>
+
+                <div class="scroll-indicator">
+                    <span>Scroll to explore</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 5V19M12 19L5 12M12 19L19 12"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         User Categories
+    ======================================== -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Choose Your Portal</h2>
+
+            <div class="categories-grid">
+
+                <!-- Institutions -->
+                <div class="category-card fade-in-up" data-category="institutions">
+                    <div class="card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 21H21M3 7L12 3L21 7M4 7V17M20 7V17M8 21V11H16V21M10 14H14M10 17H14"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">Institutions</h3>
+                    <p class="card-description">
+                        Institutions affiliated or applying for affiliation with APJ Abdul Kalam Technological
+                        University can login to manage affiliation, registration, academics, fees, and student
+                        records including attendance, evaluation, marks, and curriculum planning.
+                    </p>
+                </div>
+
+                <!-- Students -->
+                <div class="category-card fade-in-up" data-category="students">
+                    <div class="card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 14C15.3137 14 18 11.3137 18 8C18 4.68629 15.3137 2 12 2C8.68629 2 6 4.68629 6 8C6 11.3137 8.68629 14 12 14Z"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M3 22C3 18.6863 6.35786 16 12 16C17.6421 16 21 18.6863 21 22"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">Students</h3>
+                    <p class="card-description">
+                        Students admitted to affiliated colleges can login to view attendance, marks, credits,
+                        grade sheets, download documents, and securely communicate with the university.
+                    </p>
+                </div>
+
+                <!-- University -->
+                <div class="category-card fade-in-up" data-category="university">
+                    <div class="card-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M2 17L12 22L22 17"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M2 12L12 17L22 12"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+
+                    <h3 class="card-title">University</h3>
+                    <p class="card-description">
+                        University administrators manage programs, curriculum, clusters, evaluation plans,
+                        academic calendars, payments, audits, and official communications.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Sign In Section
+    ======================================== -->
+    <section class="signin-section" id="signin">
+        <div class="container">
+            <div class="signin-container fade-in-up">
+
+                <div class="signin-header">
+                    <h2 class="signin-title">Sign In</h2>
+                    <p class="signin-subtitle">
+                        Enter your credentials to access the portal
+                    </p>
+                </div>
+
+                <form class="signin-form" id="signinForm">
+
+                    <div class="form-group">
+                        <input type="text" id="username" class="form-input"
+                            required autocomplete="username">
+                        <label for="username" class="form-label">Username</label>
+                        <span class="form-bar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="password" class="form-input"
+                            required autocomplete="current-password">
+                        <label for="password" class="form-label">Password</label>
+                        <span class="form-bar"></span>
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="https://app.ktu.edu.in/eu/anon/resetPassword.htm"
+                            class="forgot-password">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="signin-btn">
+                        <span class="btn-text">Sign In</span>
+                        <svg class="btn-arrow" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         Footer
+    ======================================== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; APJ Abdul Kalam Technological University 2014. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+
+</body>
+</html>
