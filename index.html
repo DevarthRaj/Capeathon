@@ -20,12 +20,6 @@
 
 <body>
 
-    <!-- ========================================
-         Animated Particle Background
-    ======================================== -->
-    <div class="background">
-        <canvas id="particles"></canvas>
-    </div>
 
     <!-- ========================================
          Header
@@ -60,8 +54,7 @@
         <!-- Background Video -->
         <div class="curtain-video-bg">
             <video id="bgVideo" autoplay muted loop class="curtain-video">
-                <source src="https://videos.pexels.com/video-files/3144418/3144418-hd_1280_720_30fps.mp4"
-                    type="video/mp4">
+                <source src="video/WhatsApp Video 2026-02-12 at 1.03.27 AM.mp4" type="video/mp4">
             </video>
             <div class="curtain-video-overlay"></div>
         </div>
@@ -87,12 +80,14 @@
          (Left Content + ONLY ONE Login)
     ======================================== -->
     <section class="scroll-curtain-section" id="scrollCurtain">
-
+        <div class="scroll-particles">
+            <canvas id="particles"></canvas>
+        </div>
         <!-- Scroll Curtains -->
         <div class="scroll-curtain scroll-curtain-left"></div>
         <div class="scroll-curtain scroll-curtain-right"></div>
 
-        <div class="scroll-content-wrapper">
+        <div class="scroll-content-wrapper fade-in-up">
 
             <!-- LEFT SIDE CONTENT -->
             <div class="scroll-categories-container fade-in-up">

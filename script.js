@@ -3,8 +3,10 @@
 ======================================== */
 
 function initTypingEffect() {
-    const text = "WELCOME TO APJKTU";
+    const text = "APJKTU";
     const el = document.getElementById("typingText");
+    if (!el) return;
+
     let index = 0;
 
     function type() {
@@ -32,11 +34,11 @@ function initScrollCurtain() {
     const right = document.querySelector(".scroll-curtain-right");
     const content = document.querySelector(".scroll-content-wrapper");
 
+    if (!section || !left || !right || !content) return;
+
     let activated = false;
 
     function handle() {
-        if (!section) return;
-
         const top = section.getBoundingClientRect().top;
         const trigger = window.innerHeight * 0.6;
 
@@ -58,16 +60,39 @@ function initScrollCurtain() {
 }
 
 /* ========================================
-   PARTICLE SYSTEM (OPTIMIZED)
+   CARD SPOTLIGHT EFFECT
+======================================== */
+
+function initCardSpotlight() {
+    const cards = document.querySelectorAll(".scroll-category-card");
+
+    cards.forEach(card => {
+        card.addEventListener("mousemove", e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty("--mouse-x", x + "px");
+            card.style.setProperty("--mouse-y", y + "px");
+        });
+    });
+}
+
+/* ========================================
+   PARTICLE SYSTEM (SCROLL SECTION ONLY)
 ======================================== */
 
 class ParticleSystem {
     constructor() {
         this.canvas = document.getElementById("particles");
+
+        if (!this.canvas) return;
+
         this.ctx = this.canvas.getContext("2d");
         this.particles = [];
         this.count = window.innerWidth < 768 ? 40 : 70;
         this.mouse = { x: null, y: null, radius: 120 };
+
         this.init();
     }
 
@@ -90,24 +115,27 @@ class ParticleSystem {
     }
 
     resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight; // OPTIMIZED
+        this.canvas.width = this.canvas.offsetWidth;
+        this.canvas.height = this.canvas.offsetHeight;
     }
 
     create() {
         this.particles = [];
+
         for (let i = 0; i < this.count; i++) {
             this.particles.push({
                 x: Math.random() * this.canvas.width,
                 y: Math.random() * this.canvas.height,
                 size: Math.random() * 3 + 1,
-                speedX: (Math.random() - 0.5) * 0.5,
-                speedY: (Math.random() - 0.5) * 0.5
+                speedX: (Math.random() - 0.5) * 0.4,
+                speedY: (Math.random() - 0.5) * 0.4
             });
         }
     }
 
     animate() {
+        if (!this.ctx) return;
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         for (let i = 0; i < this.particles.length; i++) {
@@ -119,31 +147,30 @@ class ParticleSystem {
             if (p.x < 0 || p.x > this.canvas.width) p.speedX *= -1;
             if (p.y < 0 || p.y > this.canvas.height) p.speedY *= -1;
 
-            if (this.mouse.x) {
+            if (this.mouse.x !== null) {
                 const dx = this.mouse.x - p.x;
                 const dy = this.mouse.y - p.y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
                 if (dist < this.mouse.radius) {
-                    p.x -= dx / 20;
-                    p.y -= dy / 20;
+                    p.x -= dx / 25;
+                    p.y -= dy / 25;
                 }
             }
 
             this.ctx.beginPath();
             this.ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-            this.ctx.fillStyle = "rgba(11,45,91,0.4)";
+            this.ctx.fillStyle = "rgba(11,45,91,0.25)";
             this.ctx.fill();
 
-            // lighter linking
             for (let j = i + 1; j < this.particles.length; j++) {
                 const dx = p.x - this.particles[j].x;
                 const dy = p.y - this.particles[j].y;
                 const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < 100) {
-                    this.ctx.strokeStyle = `rgba(11,45,91,${0.15 *
-                        (1 - dist / 100)})`;
+                if (dist < 90) {
+                    this.ctx.strokeStyle =
+                        `rgba(11,45,91,${0.12 * (1 - dist / 90)})`;
                     this.ctx.lineWidth = 0.5;
                     this.ctx.beginPath();
                     this.ctx.moveTo(p.x, p.y);
@@ -161,7 +188,7 @@ class ParticleSystem {
 }
 
 /* ========================================
-   FADE IN ANIMATIONS
+   SCROLL FADE-IN
 ======================================== */
 
 class ScrollAnimations {
@@ -184,7 +211,7 @@ class ScrollAnimations {
 }
 
 /* ========================================
-   LOGIN FORM HANDLING
+   LOGIN FORM
 ======================================== */
 
 function initLoginForm() {
@@ -194,8 +221,10 @@ function initLoginForm() {
     form.addEventListener("submit", e => {
         e.preventDefault();
 
-        const username = document.getElementById("scrollUsername").value;
-        const password = document.getElementById("scrollPassword").value;
+        const username =
+            document.getElementById("scrollUsername").value;
+        const password =
+            document.getElementById("scrollPassword").value;
 
         if (!username || !password) {
             showNotification("Please fill all fields", "error");
@@ -217,7 +246,7 @@ function initLoginForm() {
 }
 
 /* ========================================
-   NOTIFICATIONS (FIXED)
+   NOTIFICATIONS
 ======================================== */
 
 function showNotification(message, type = "info") {
@@ -232,9 +261,9 @@ function showNotification(message, type = "info") {
 
     document.body.appendChild(note);
 
-    setTimeout(() => {
+    requestAnimationFrame(() => {
         note.classList.add("show");
-    }, 10);
+    });
 
     setTimeout(() => {
         note.classList.remove("show");
@@ -242,7 +271,6 @@ function showNotification(message, type = "info") {
     }, 2500);
 }
 
-/* Add notification styles */
 const style = document.createElement("style");
 style.textContent = `
 .notification{
@@ -261,29 +289,6 @@ style.textContent = `
     transform:translateX(0);
 }`;
 document.head.appendChild(style);
-
-/* ========================================
-   PARALLAX (OPTIMIZED)
-======================================== */
-
-function initParallax() {
-    const hero = document.querySelector(".curtain-raiser-section");
-    if (!hero) return;
-
-    let ticking = false;
-
-    window.addEventListener("scroll", () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrolled = window.pageYOffset;
-                hero.style.transform =
-                    `translateY(${scrolled * 0.3}px)`;
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
-}
 
 /* ========================================
    NAVBAR ACTIVE STATE
@@ -309,8 +314,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initTypingEffect();
     initScrollCurtain();
     initLoginForm();
-    initParallax();
+    initCardSpotlight();
     initNavbar();
 
-    console.log("🎓 Optimized KTU Portal Loaded");
+    console.log("🎓 Final Optimized KTU Portal Loaded");
 });

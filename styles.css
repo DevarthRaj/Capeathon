@@ -13,7 +13,7 @@
     --white: #ffffff;
     --off-white: #f4f6fa;
 
-    --glass: rgba(255, 255, 255, 0.85);
+    --glass: rgba(255, 255, 255, 0.9);
     --glass-border: rgba(11, 45, 91, 0.15);
 
     --radius-sm: 8px;
@@ -42,22 +42,6 @@ body {
     background: var(--white);
     color: var(--navy);
     overflow-x: hidden;
-}
-
-/* ========================================
-   PARTICLE BACKGROUND
-======================================== */
-
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    background: linear-gradient(180deg, var(--white), var(--off-white));
-}
-
-#particles {
-    width: 100%;
-    height: 100%;
 }
 
 /* ========================================
@@ -123,7 +107,7 @@ body {
 }
 
 /* ========================================
-   CURTAIN RAISER
+   CURTAIN RAISER (VIDEO HERO)
 ======================================== */
 
 .curtain-raiser-section {
@@ -197,7 +181,7 @@ body {
 }
 
 /* ========================================
-   SCROLL CURTAIN SECTION
+   SCROLL SECTION
 ======================================== */
 
 .scroll-curtain-section {
@@ -208,56 +192,34 @@ body {
     justify-content: center;
     padding: 4rem 2rem;
     position: relative;
+    overflow: hidden;
 }
 
-.scroll-curtain {
-    position: fixed;
-    top: 0;
-    width: 50%;
-    height: 100vh;
-    background: var(--navy);
-    z-index: 100;
-    transition: transform 0.8s cubic-bezier(.645, .045, .355, 1);
+/* ========================================
+   PARTICLES (ONLY IN SCROLL SECTION)
+======================================== */
+
+.scroll-particles {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
     pointer-events: none;
 }
 
-.scroll-curtain-left {
-    left: 0;
-    transform: translateX(-100%);
+.scroll-particles canvas {
+    width: 100%;
+    height: 100%;
 }
 
-.scroll-curtain-right {
-    right: 0;
-    transform: translateX(100%);
-}
-
-.scroll-curtain.active {
-    transform: translateX(0);
-}
 
 /* ========================================
    CONTENT GRID
 ======================================== */
 
-.scroll-content-wrapper {
-    width: 100%;
-    max-width: 1400px;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    gap: 3rem;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease 0.6s,
-        transform 0.8s ease 0.6s;
-}
 
-.scroll-content-wrapper.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
 
 /* ========================================
-   LEFT SIDE CARDS
+   CATEGORY CARDS
 ======================================== */
 
 .scroll-categories-container {
@@ -267,19 +229,94 @@ body {
 }
 
 .scroll-category-card {
+    position: relative;
+    overflow: hidden;
     background: var(--glass);
     backdrop-filter: blur(20px);
     border-radius: var(--radius-lg);
+    border: 1px solid var(--glass-border);
     padding: 2rem;
     display: flex;
     gap: 1.5rem;
-    transition: var(--transition);
     cursor: pointer;
+    transition: all 0.4s cubic-bezier(.22, .61, .36, 1);
 }
 
 .scroll-category-card:hover {
-    transform: translateX(8px);
-    box-shadow: 0 10px 40px rgba(253, 181, 21, 0.3);
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(11, 45, 91, 0.2);
+}
+
+/* Animated border */
+.scroll-category-card::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(120deg,
+            rgba(253, 181, 21, 0.8),
+            rgba(11, 45, 91, 0.8),
+            rgba(253, 181, 21, 0.8));
+    background-size: 200% 200%;
+    animation: borderMove 6s linear infinite;
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-category-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+/* Icon pulse */
+.scroll-category-card:hover .card-icon {
+    animation: iconPulse 1.2s infinite alternate;
+}
+
+@keyframes iconPulse {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+}
+
+/* Spotlight */
+.scroll-category-card::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle,
+            rgba(253, 181, 21, 0.25) 0%,
+            transparent 60%);
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.scroll-category-card:hover::after {
+    opacity: 1;
 }
 
 .card-icon {
@@ -295,6 +332,20 @@ body {
     font-size: 0.95rem;
     color: #444;
 }
+
+.scroll-content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+    gap: 3rem;
+}
+
 
 /* ========================================
    LOGIN FORM
@@ -333,10 +384,7 @@ body {
     color: #555;
 }
 
-/* INPUTS */
-
 .form-group {
-    position: relative;
     margin-bottom: 1.5rem;
 }
 
@@ -353,13 +401,6 @@ body {
     border-color: var(--gold);
 }
 
-.form-label {
-    font-size: 0.85rem;
-    color: #666;
-    margin-top: 5px;
-    display: block;
-}
-
 .forgot-password {
     font-size: 0.9rem;
     text-decoration: none;
@@ -369,8 +410,6 @@ body {
 .forgot-password:hover {
     color: var(--gold);
 }
-
-/* BUTTON */
 
 .scroll-signin-btn {
     width: 100%;
