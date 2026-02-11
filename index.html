@@ -35,9 +35,7 @@
             <div class="nav-wrapper">
 
                 <div class="logo-container">
-                    <div class="logo-placeholder">
-                        <div class="logo-text">KTU</div>
-                    </div>
+                    <img src="logo.png" alt="KTU Logo" class="logo-image">
                     <div class="header-text">
                         <h1>e-Gov Platform for APJ Abdul Kalam Technological University</h1>
                     </div>
@@ -53,6 +51,91 @@
             </div>
         </div>
     </header>
+
+    <!-- ========================================
+         Curtain Raiser Section
+    ======================================== -->
+    <section class="curtain-raiser-section" id="curtainRaiser">
+        <!-- Background Video -->
+        <div class="curtain-video-bg">
+            <video id="bgVideo" autoplay muted loop class="curtain-video">
+                <source src="https://videos.pexels.com/video-files/3144418/3144418-hd_1280_720_30fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="curtain-video-overlay"></div>
+        </div>
+
+        <!-- Curtains -->
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+
+        <!-- Login Form on Left -->
+        <div class="curtain-login-container">
+            <div class="curtain-login-form">
+                <div class="curtain-form-header">
+                    <img src="logo.png" alt="KTU Logo" class="curtain-form-logo">
+                    <h2 class="curtain-form-title">Welcome to KTU Portal</h2>
+                    <p class="curtain-form-subtitle">Access your personalized dashboard</p>
+                </div>
+
+                <form class="curtain-signin-form" id="curtainSigninForm">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <input type="text" id="curtainUsername" class="form-input"
+                                placeholder="Enter your username" required autocomplete="username">
+                        </div>
+                        <label for="curtainUsername" class="form-label">Username</label>
+                        <span class="form-bar"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1C6.48 1 2 5.48 2 11v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 7 15.5 7 14 7.67 14 8.5s.67 1.5 1.5 1.5z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <input type="password" id="curtainPassword" class="form-input"
+                                placeholder="Enter your password" required autocomplete="current-password">
+                        </div>
+                        <label for="curtainPassword" class="form-label">Password</label>
+                        <span class="form-bar"></span>
+                    </div>
+
+                    <div class="form-footer">
+                        <a href="https://app.ktu.edu.in/eu/anon/resetPassword.htm"
+                            class="forgot-password">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="signin-btn curtain-signin-btn">
+                        <span class="btn-text">Sign In</span>
+                        <svg class="btn-arrow" width="20" height="20"
+                            viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     <!-- ========================================
          Hero Section
@@ -180,24 +263,45 @@
             <div class="signin-container fade-in-up">
 
                 <div class="signin-header">
-                    <h2 class="signin-title">Sign In</h2>
+                    <img src="logo.png" alt="KTU Logo" class="signin-logo">
+                    <h2 class="signin-title">Welcome Back</h2>
                     <p class="signin-subtitle">
-                        Enter your credentials to access the portal
+                        Sign in to your account to access the portal
                     </p>
                 </div>
 
                 <form class="signin-form" id="signinForm">
 
                     <div class="form-group">
-                        <input type="text" id="username" class="form-input"
-                            required autocomplete="username">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <input type="text" id="username" class="form-input"
+                                placeholder="Enter your username" required autocomplete="username">
+                        </div>
                         <label for="username" class="form-label">Username</label>
                         <span class="form-bar"></span>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" id="password" class="form-input"
-                            required autocomplete="current-password">
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 1C6.48 1 2 5.48 2 11v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 7 15.5 7 14 7.67 14 8.5s.67 1.5 1.5 1.5z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <input type="password" id="password" class="form-input"
+                                placeholder="Enter your password" required autocomplete="current-password">
+                        </div>
                         <label for="password" class="form-label">Password</label>
                         <span class="form-bar"></span>
                     </div>
@@ -232,7 +336,64 @@
     ======================================== -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; APJ Abdul Kalam Technological University 2014. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">About KTU</h3>
+                    <p class="footer-text">
+                        APJ Abdul Kalam Technological University is a premier institution dedicated to providing world-class education and fostering innovation.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Research</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <p class="footer-text">
+                        <strong>Email:</strong> support@ktu.edu.in<br>
+                        <strong>Phone:</strong> +91-XXXXXXXXXX<br>
+                        <strong>Address:</strong> Thiruvananthapuram, Kerala
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h3 class="footer-title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2s9 5 20 5a9.5 9.5 0 00-9-5.5c4.75 2.25 7-7 7-7a10.6 10.6 0 01-3 1"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                <circle cx="4" cy="4" r="2"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 APJ Abdul Kalam Technological University. All rights reserved.</p>
+                <div class="footer-meta">
+                    <a href="#">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
         </div>
     </footer>
 

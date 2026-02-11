@@ -1,4 +1,59 @@
 // ========================================
+// Curtain Raiser Animation
+// ========================================
+
+function initCurtainRaiser() {
+    // Curtain automatically starts animating on page load
+    // The CSS animation is triggered via animation property with delay
+    
+    // Handle curtain form submission
+    const curtainForm = document.getElementById('curtainSigninForm');
+    if (curtainForm) {
+        curtainForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('curtainUsername').value;
+            const password = document.getElementById('curtainPassword').value;
+
+            if (!username || !password) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+
+            const btn = curtainForm.querySelector('.curtain-signin-btn');
+            const original = btn.innerHTML;
+            btn.innerHTML = 'Signing in...';
+            btn.disabled = true;
+
+            setTimeout(() => {
+                showNotification('Authentication successful!', 'success');
+                btn.innerHTML = original;
+                btn.disabled = false;
+            }, 1500);
+        });
+
+        // Add focus effects to curtain form inputs
+        curtainForm.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.borderBottomColor = 'var(--navy-blue)';
+            });
+
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.style.borderBottomColor = '#e0e0e0';
+                }
+            });
+
+            input.addEventListener('input', function() {
+                if (this.value) {
+                    this.parentElement.style.borderBottomColor = 'var(--navy-blue)';
+                }
+            });
+        });
+    }
+}
+
+// ========================================
 // Particle Animation Background
 // ========================================
 
@@ -351,6 +406,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initCategoryCards();
     initNavbar();
     initFormHandling();
+    initCurtainRaiser();
     initParallax();
     initCanvasResize();
     console.log('🎓 KTU Portal initialized successfully!');
